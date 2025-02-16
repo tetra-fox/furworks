@@ -2,7 +2,7 @@
 // https://github.com/mrdoob/three.js/blob/12e4fd8bdd409d2b1b3771edc7f9d693d8b0c78a/examples/jsm/shaders/FilmShader.js
 // https://github.com/mrdoob/three.js/blob/12e4fd8bdd409d2b1b3771edc7f9d693d8b0c78a/examples/jsm/postprocessing/FilmPass.js
 
-import { ShaderMaterial, Texture, UniformsUtils, WebGLRenderer, WebGLRenderTarget } from "three";
+import { ShaderMaterial, Texture, UniformsUtils, type WebGLRenderer, type WebGLRenderTarget } from "three";
 import { Pass, FullScreenQuad } from "three/examples/jsm/postprocessing/Pass.js";
 
 const NoiseShader = {
