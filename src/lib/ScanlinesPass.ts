@@ -1,4 +1,10 @@
-import { ShaderMaterial, Texture, UniformsUtils, WebGLRenderer, WebGLRenderTarget } from "three";
+import {
+  ShaderMaterial,
+  Texture,
+  UniformsUtils,
+  type WebGLRenderer,
+  type WebGLRenderTarget
+} from "three";
 import { Pass, FullScreenQuad } from "three/examples/jsm/postprocessing/Pass.js";
 
 const ScanlinesShader = {
