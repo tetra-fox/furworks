@@ -1,0 +1,22 @@
+/* tailwind */
+@import "tailwindcss";
+@plugin "@iconify/tailwind4";
+@theme {
+  --color-furworks: rgb(158, 255, 0);
+}
+
+body {
+  font-family: "PP Formula Extended Black", monospace;
+  @apply bg-black text-neutral-200 antialiased;
+}
+
+@font-face {
+  font-family: "PP Formula Extended Black";
+  src:
+    url("/fonts/PPFormula-ExtendedBlack.woff2") format("woff2"),
+    url("/fonts/PPFormula-ExtendedBlack.woff") format("woff"),
+    url("/fonts/PPFormula-ExtendedBlack.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
