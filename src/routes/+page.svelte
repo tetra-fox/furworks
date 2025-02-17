@@ -154,18 +154,16 @@
 <svelte:head>
   <title>FURWORKS</title>
   <meta property="og:title" content="FURWORKS" />
-  <meta property="og:site_name" content="FURWORKS">
+  <meta property="og:site_name" content="FURWORKS" />
   <meta property="og:description" content="A forward-thinking furry rave" />
   <meta property="og:url" content="https://furworks.vercel.app" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://furworks.vercel.app/img/og.png" />
   <meta property="description" content="A forward-thinking furry rave" />
-  
 </svelte:head>
 
 <div class="h-screen w-screen p-4">
-  <div
-    class="relative h-full w-full overflow-hidden rounded-2xl border-1 border-neutral-800 p-8">
+  <div class="relative h-full w-full overflow-hidden rounded-2xl border-1 border-neutral-800 p-8">
     <div class="relative z-20 flex h-full items-end justify-between mix-blend-difference">
       <div class="flex flex-col gap-4">
         <h1 class="text-4xl text-neutral-200">A forward-thinking furry rave</h1>
