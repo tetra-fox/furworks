@@ -165,11 +165,11 @@
 
 <div class="h-screen w-screen p-4">
   <div
-    class="relative h-full w-full overflow-hidden rounded-2xl border-[1px] border-neutral-800 p-8">
+    class="relative h-full w-full overflow-hidden rounded-2xl border-1 border-neutral-800 p-8">
     <div class="relative z-20 flex h-full items-end justify-between mix-blend-difference">
       <div class="flex flex-col gap-4">
         <h1 class="text-4xl text-neutral-200">A forward-thinking furry rave</h1>
-        <h2 class="text-2xl text-neutral-200">March 15, 2024 9pm - 2am</h2>
+        <h2 class="text-2xl text-neutral-200">March 15, 2025 9pm - 2am</h2>
       </div>
       <div class="flex gap-4">
         <a href="https://bsky.app/profile/furworks.bsky.social" aria-label="Bluesky">
