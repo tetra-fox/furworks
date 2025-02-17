@@ -42,7 +42,7 @@
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
     renderer = new THREE.WebGLRenderer({ canvas });
-    
+
     renderer.setSize(window.innerWidth, window.innerHeight);
 
     // postprocessing
@@ -156,7 +156,8 @@
 </svelte:head>
 
 <div class="h-screen w-screen p-4">
-  <div class="relative h-full w-full overflow-hidden rounded-2xl p-8 border-[1px] border-neutral-800">
+  <div
+    class="relative h-full w-full overflow-hidden rounded-2xl border-[1px] border-neutral-800 p-8">
     <div class="relative z-20 flex h-full items-end justify-between mix-blend-difference">
       <div class="flex flex-col gap-4">
         <h1 class="text-4xl text-neutral-200">A forward-thinking furry rave</h1>
