@@ -2,7 +2,7 @@
   import { onMount, onDestroy } from "svelte";
   import * as THREE from "three";
   import { SVGLoader } from "three/examples/jsm/loaders/SVGLoader.js";
-  import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
+  import { EffectComposer, type Pass } from "three/examples/jsm/postprocessing/EffectComposer.js";
   import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
   import {
     AfterimagePass,
@@ -25,7 +25,7 @@
   const mousePos = new THREE.Vector2();
   const cameraAngle = new THREE.Vector2();
   const cameraAngleTarget = new THREE.Vector2();
-  const clock = new THREE.Clock();
+  const passes: Record<string, Pass | ShaderPass | null> = {};
   const easeFactor = 0.1;
   const radius = 25; // camera distance from center
 
@@ -57,12 +57,17 @@
 
     composer.passes = [
       new RenderPass(scene, camera),
-      new AfterimagePass(0.65),
-      bc,
-      new NoisePass(0.17),
-      new ScanlinesPass(0.5, 1500),
-      new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 0.3, 0.9, 0.5),
-      fxaa,
+      (passes.afterimage = new AfterimagePass(0.65)),
+      (passes.bc = bc),
+      (passes.noise = new NoisePass(0.17)),
+      (passes.scanlines = new ScanlinesPass(0.5, 1500)),
+      (passes.bloom = new UnrealBloomPass(
+        new THREE.Vector2(window.innerWidth, window.innerHeight),
+        0.3,
+        0.9,
+        0.5
+      )),
+      (passes.fxaa = fxaa),
       new OutputPass()
     ];
   };
@@ -91,9 +96,7 @@
     scene.add(logoGroup);
   };
 
-  const animate = () => {
-    requestAnimationFrame(animate);
-
+  const animate = (time: number) => {
     cameraAngle.x += (cameraAngleTarget.x - cameraAngle.x) * easeFactor;
     cameraAngle.y += (cameraAngleTarget.y - cameraAngle.y) * easeFactor;
 
@@ -105,8 +108,8 @@
 
     camera?.lookAt(scene.position); // always look at world origin
 
-    logoGroup.rotation.y += 0.01;
-    logoGroup.position.set(0, Math.sin(clock.getElapsedTime() * 2) / 2, 0);
+    logoGroup.rotation.set(0, time / 1500, 0);
+    logoGroup.position.set(0, Math.sin(time / 750) / 2, 0);
 
     composer?.render();
   };
@@ -114,7 +117,7 @@
   onMount(async () => {
     initScene();
     await loadSVG();
-    animate();
+    renderer?.setAnimationLoop(animate);
     ready = true;
   });
 
@@ -130,8 +133,10 @@
 
   // event handlers
   const onResize = () => {
-    if (!camera || !renderer) return;
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer?.setSize(window.innerWidth, window.innerHeight);
+    composer?.setSize(window.innerWidth, window.innerHeight);
+    if (passes.fxaa instanceof ShaderPass) passes.fxaa?.uniforms?.resolution.value.set(1 / window.innerWidth, 1 / window.innerHeight);
+    if (!camera) return;
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
   };
