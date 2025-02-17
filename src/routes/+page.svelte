@@ -170,7 +170,7 @@
 
 <div class="h-screen w-screen p-4">
   <div
-    class="relative box-border h-full w-full overflow-hidden rounded-2xl border-1 border-neutral-800 p-8">
+    class="relative box-border h-full w-full overflow-hidden rounded-2xl outline outline-neutral-800 p-8">
     <div class="relative z-20 flex h-full items-end justify-between mix-blend-difference">
       <div class="flex flex-col gap-4">
         <h1 class="text-4xl text-neutral-200">A forward-thinking furry rave</h1>

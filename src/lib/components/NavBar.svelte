@@ -14,8 +14,8 @@
     menuOpen = false;
   }}
   class={[
-    "fixed top-0 right-0 left-0 z-50 m-6 box-border flex rounded-2xl border-neutral-800 p-6 transition-all duration-200 ease-out select-none",
-    scrolled || menuOpen ? "border backdrop-blur-md backdrop-brightness-75" : "border-0 bg-transparent",
+    "fixed top-0 right-0 left-0 z-50 m-6 box-border flex rounded-2xl p-6 transition-all duration-300 ease-out select-none",
+    scrolled || menuOpen ? "outline backdrop-blur-md outline-neutral-900 backdrop-brightness-75" : "outline-0 outline-transparent bg-transparent",
     menuOpen ? "flex-col" : "flex items-center justify-between"
   ]}>
   <div class="flex w-full items-center justify-between">
