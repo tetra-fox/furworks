@@ -130,9 +130,10 @@
 
   // event handlers
   const onResize = () => {
-    renderer?.setSize(window.innerWidth, window.innerHeight);
-    if (camera) camera.aspect = window.innerWidth / window.innerHeight;
-    camera?.updateProjectionMatrix();
+    if (!camera || !renderer) return;
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
   };
 
   const onMouseMove = (e: MouseEvent) => {
