@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@svelte-put/clickoutside':
+        specifier: ^4.0.0
+        version: 4.0.0(svelte@5.20.1)
       '@vercel/analytics':
         specifier: ^1.5.0
         version: 1.5.0(@sveltejs/kit@2.17.2(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.20.1)(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(yaml@2.7.0)))(svelte@5.20.1)(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(yaml@2.7.0)))(svelte@5.20.1)
@@ -27,6 +30,9 @@ importers:
       '@iconify-json/fa6-brands':
         specifier: ^1.2.5
         version: 1.2.5
+      '@iconify-json/material-symbols':
+        specifier: ^1.2.14
+        version: 1.2.14
       '@iconify/tailwind4':
         specifier: ^1.0.3
         version: 1.0.3(tailwindcss@4.0.6)
@@ -320,6 +326,9 @@ packages:
   '@iconify-json/fa6-brands@1.2.5':
     resolution: {integrity: sha512-U/iFfziz6jSN9zArOJZYTtoj2tQyh6MxPdI8M84DQ2kEulPaj8j+h9bqvjmzszNHmD7v+kmmKd/MLkMKk+3Zuw==}
 
+  '@iconify-json/material-symbols@1.2.14':
+    resolution: {integrity: sha512-S0AAFFQPVr8Dkrprspz/otNjxdD3rJRXDGZjbO8a8zn8ZR5mO8jAF81lVoTfUWxPH6SCtH2lK1JQGXHGPxld7g==}
+
   '@iconify/tailwind4@1.0.3':
     resolution: {integrity: sha512-qhgEBFwbhoWWGo3X27KInvNQOjt7UwmZTuLpjYQlYMTkcXzwPnomqmxzsBUC2L0ySA105BFDppYBv4CuWBQKwA==}
     peerDependencies:
@@ -484,6 +493,11 @@ packages:
     resolution: {integrity: sha512-4ZedScpxxIrVO7otcZ8kCX1mZArtH2Wfj3uFCxRJ9NO80gg1XV0U/b2f/MKaGwj2X3QopHfoWiDQ917FRpwY3w==}
     cpu: [x64]
     os: [win32]
+
+  '@svelte-put/clickoutside@4.0.0':
+    resolution: {integrity: sha512-36lLICc+RB6t/Kw0L6fZKU/y/yAAx3P+SsI2BtYM1GUBaYytSFHBWMw1c3TQEWj7Y8SgY6H3JsfEd2flbNWhqA==}
+    peerDependencies:
+      svelte: ^5.1.0
 
   '@sveltejs/adapter-vercel@5.6.2':
     resolution: {integrity: sha512-5cNqXRZRErfknuvCGisBG2uZlkKSIy5tmvmTV21+XKAn6Qob5rXVZVfZbnyzokbBdE4jmbNsGDTeSzxfUe1IPQ==}
@@ -1901,6 +1915,10 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
+  '@iconify-json/material-symbols@1.2.14':
+    dependencies:
+      '@iconify/types': 2.0.0
+
   '@iconify/tailwind4@1.0.3(tailwindcss@4.0.6)':
     dependencies:
       '@iconify/types': 2.0.0
@@ -2048,6 +2066,10 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.34.7':
     optional: true
+
+  '@svelte-put/clickoutside@4.0.0(svelte@5.20.1)':
+    dependencies:
+      svelte: 5.20.1
 
   '@sveltejs/adapter-vercel@5.6.2(@sveltejs/kit@2.17.2(@sveltejs/vite-plugin-svelte@5.0.3(svelte@5.20.1)(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(yaml@2.7.0)))(svelte@5.20.1)(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(yaml@2.7.0)))(rollup@4.34.7)':
     dependencies:

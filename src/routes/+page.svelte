@@ -135,7 +135,8 @@
   const onResize = () => {
     renderer?.setSize(window.innerWidth, window.innerHeight);
     composer?.setSize(window.innerWidth, window.innerHeight);
-    if (passes.fxaa instanceof ShaderPass) passes.fxaa?.uniforms?.resolution.value.set(1 / window.innerWidth, 1 / window.innerHeight);
+    if (passes.fxaa instanceof ShaderPass)
+      passes.fxaa?.uniforms?.resolution.value.set(1 / window.innerWidth, 1 / window.innerHeight);
     if (!camera) return;
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
@@ -168,7 +169,8 @@
 </svelte:head>
 
 <div class="h-screen w-screen p-4">
-  <div class="relative h-full w-full overflow-hidden rounded-2xl border-1 border-neutral-800 p-8">
+  <div
+    class="relative box-border h-full w-full overflow-hidden rounded-2xl border-1 border-neutral-800 p-8">
     <div class="relative z-20 flex h-full items-end justify-between mix-blend-difference">
       <div class="flex flex-col gap-4">
         <h1 class="text-4xl text-neutral-200">A forward-thinking furry rave</h1>
@@ -200,3 +202,145 @@
       ]}></canvas>
   </div>
 </div>
+
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p><p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p><p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p><p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p><p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p><p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p><p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p><p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p><p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p><p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p><p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p><p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p><p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p><p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
+<p>a</p>
