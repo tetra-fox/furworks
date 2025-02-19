@@ -39,11 +39,11 @@
 
     scene.background = new THREE.Color(0x171717);
 
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
 
     renderer = new THREE.WebGLRenderer({ canvas });
 
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
 
     // postprocessing
     composer = new EffectComposer(renderer);
@@ -53,7 +53,7 @@
     bc.uniforms.brightness.value = 0.005;
 
     const fxaa = new ShaderPass(FXAAShader);
-    fxaa.uniforms.resolution.value.set(1 / window.innerWidth, 1 / window.innerHeight);
+    fxaa.uniforms.resolution.value.set(1 / canvas.clientWidth, 1 / canvas.clientHeight);
 
     composer.passes = [
       new RenderPass(scene, camera),
@@ -62,7 +62,7 @@
       (passes.noise = new NoisePass(0.17)),
       (passes.scanlines = new ScanlinesPass(0.5, 1500)),
       (passes.bloom = new UnrealBloomPass(
-        new THREE.Vector2(window.innerWidth, window.innerHeight),
+        new THREE.Vector2(canvas.clientWidth, canvas.clientHeight),
         0.3,
         0.9,
         0.5
@@ -133,19 +133,21 @@
 
   // event handlers
   const onResize = () => {
-    renderer?.setSize(window.innerWidth, window.innerHeight);
-    composer?.setSize(window.innerWidth, window.innerHeight);
+    if (!canvas) return;
+    renderer?.setSize(canvas.clientWidth, canvas.clientHeight, false);
+    composer?.setSize(canvas.clientWidth, canvas.clientHeight);
     if (passes.fxaa instanceof ShaderPass)
-      passes.fxaa?.uniforms?.resolution.value.set(1 / window.innerWidth, 1 / window.innerHeight);
+      passes.fxaa?.uniforms?.resolution.value.set(1 / canvas.clientWidth, 1 / canvas.clientHeight);
     if (!camera) return;
-    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.aspect = canvas.clientWidth / canvas.clientHeight;
     camera.updateProjectionMatrix();
   };
 
   const onMouseMove = (e: MouseEvent) => {
+    if (!canvas) return;
     mousePos.set(
-      (e.clientX / window.innerWidth) * 2 - 1,
-      -(e.clientY / window.innerHeight) * 2 + 1
+      (e.clientX / canvas.clientWidth) * 2 - 1,
+      -(e.clientY / canvas.clientHeight) * 2 + 1
     );
 
     cameraAngleTarget.set(
@@ -168,7 +170,7 @@
   <meta property="description" content="A forward-thinking furry rave" />
 </svelte:head>
 
-<div class="h-screen w-screen p-4">
+<div class="h-dvh w-dvw p-4">
   <div
     class="relative box-border h-full w-full overflow-hidden rounded-2xl outline outline-neutral-800 p-8">
     <div class="relative z-20 flex h-full items-end justify-between mix-blend-difference">
