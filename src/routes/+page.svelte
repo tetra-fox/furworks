@@ -189,6 +189,11 @@
             class="icon-[fa6-brands--twitter] size-6 text-neutral-200 transition-colors duration-100 hover:text-neutral-50"
           ></span
           ></a>
+          <a href="https://instagram.com/thisisfurworks" aria-label="Twitter"
+          ><span
+            class="icon-[fa6-brands--instagram] size-6 text-neutral-200 transition-colors duration-100 hover:text-neutral-50"
+          ></span
+          ></a>
         <a href="https://t.me/+sfvbvgLQZGcwYmI5" aria-label="Telegram">
           <span
             class="icon-[fa6-brands--telegram] size-6 text-neutral-200 transition-colors duration-100 hover:text-neutral-50"
