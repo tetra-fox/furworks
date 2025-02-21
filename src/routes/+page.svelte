@@ -164,9 +164,9 @@
   <meta property="og:title" content="FURWORKS" />
   <meta property="og:site_name" content="FURWORKS" />
   <meta property="og:description" content="A forward-thinking furry rave" />
-  <meta property="og:url" content="https://furworks.vercel.app" />
+  <meta property="og:url" content="https://furworks.club" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://furworks.vercel.app/img/og.png" />
+  <meta property="og:image" content="https://furworks.club/img/og.png" />
   <meta property="description" content="A forward-thinking furry rave" />
 </svelte:head>
 
@@ -178,25 +178,25 @@
         <h1 class="text-4xl text-neutral-200">A forward-thinking furry rave</h1>
         <h2 class="text-2xl text-neutral-200">March 15, 2025 9pm - 2am</h2>
       </div>
-      <div class="flex gap-4">
+      <div class="flex gap-4 sm:flex-row flex-col">
         <a href="https://bsky.app/profile/furworks.bsky.social" aria-label="Bluesky">
           <span
-            class="icon-[fa6-brands--bluesky] size-6 text-neutral-200 transition-colors duration-100 hover:text-neutral-50"
+            class="icon-[fa6-brands--bluesky] social-link"
           ></span
           ></a>
         <a href="https://x.com/thisisfurworks" aria-label="Twitter"
           ><span
-            class="icon-[fa6-brands--twitter] size-6 text-neutral-200 transition-colors duration-100 hover:text-neutral-50"
+            class="icon-[fa6-brands--twitter] social-link"
           ></span
           ></a>
           <a href="https://instagram.com/thisisfurworks" aria-label="Twitter"
           ><span
-            class="icon-[fa6-brands--instagram] size-6 text-neutral-200 transition-colors duration-100 hover:text-neutral-50"
+            class="icon-[fa6-brands--instagram] social-link"
           ></span
           ></a>
         <a href="https://t.me/+sfvbvgLQZGcwYmI5" aria-label="Telegram">
           <span
-            class="icon-[fa6-brands--telegram] size-6 text-neutral-200 transition-colors duration-100 hover:text-neutral-50"
+            class="icon-[fa6-brands--telegram] social-link"
           ></span
           ></a>
       </div>
@@ -209,3 +209,11 @@
       ]}></canvas>
   </div>
 </div>
+
+<style lang="postcss">
+  @reference "tailwindcss/theme";
+
+  .social-link {
+    @apply sm:size-6 size-4 text-neutral-200 transition-colors duration-100 hover:text-neutral-50;
+  }
+</style>
