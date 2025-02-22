@@ -14,6 +14,7 @@
   } from "three/examples/jsm/Addons.js";
   import { NoisePass } from "$lib/NoisePass";
   import { ScanlinesPass } from "$lib/ScanlinesPass";
+  import NavBar from "$lib/components/NavBar.svelte";
 
   let canvas: HTMLCanvasElement | null = null;
   let camera: THREE.PerspectiveCamera | null = null;
@@ -118,7 +119,13 @@
     initScene();
     await loadSVG();
     renderer?.setAnimationLoop(animate);
-    ready = true;
+    // force first frame to draw, then set ready
+    requestAnimationFrame(() => {
+      composer?.render();
+      requestAnimationFrame(() => {
+        ready = true;
+      });
+    });
   });
 
   onDestroy(() => {
@@ -172,33 +179,21 @@
 
 <div class="h-dvh w-dvw p-4">
   <div
-    class="relative box-border h-full w-full overflow-hidden rounded-2xl outline outline-neutral-800 p-8">
+    class="relative box-border h-full w-full overflow-hidden rounded-2xl p-8 outline outline-neutral-800">
     <div class="relative z-20 flex h-full items-end justify-between mix-blend-difference">
       <div class="flex flex-col gap-4">
-        <h1 class="text-4xl text-neutral-200">A forward-thinking furry rave</h1>
-        <h2 class="text-2xl text-neutral-200">March 15, 2025 9pm - 2am</h2>
+        <h1 class="text-4xl">A forward-thinking furry rave</h1>
+        <h2 class="text-2xl">March 15, 2025 9pm - 2am</h2>
       </div>
-      <div class="flex gap-4 sm:flex-row flex-col">
+      <div class="flex flex-col gap-4 sm:flex-row">
         <a href="https://bsky.app/profile/furworks.bsky.social" aria-label="Bluesky">
-          <span
-            class="icon-[fa6-brands--bluesky] social-link"
-          ></span
-          ></a>
+          <span class="icon-[fa6-brands--bluesky] social-link"></span></a>
         <a href="https://x.com/thisisfurworks" aria-label="Twitter"
-          ><span
-            class="icon-[fa6-brands--twitter] social-link"
-          ></span
-          ></a>
-          <a href="https://instagram.com/thisisfurworks" aria-label="Twitter"
-          ><span
-            class="icon-[fa6-brands--instagram] social-link"
-          ></span
-          ></a>
+          ><span class="icon-[fa6-brands--twitter] social-link"></span></a>
+        <a href="https://instagram.com/thisisfurworks" aria-label="Twitter"
+          ><span class="icon-[fa6-brands--instagram] social-link"></span></a>
         <a href="https://t.me/+sfvbvgLQZGcwYmI5" aria-label="Telegram">
-          <span
-            class="icon-[fa6-brands--telegram] social-link"
-          ></span
-          ></a>
+          <span class="icon-[fa6-brands--telegram] social-link"></span></a>
       </div>
     </div>
     <canvas
@@ -212,8 +207,8 @@
 
 <style lang="postcss">
   @reference "tailwindcss/theme";
-
+  @reference "../app.css";
   .social-link {
-    @apply sm:size-6 size-4 text-neutral-200 transition-colors duration-100 hover:text-neutral-50;
+    @apply hover:text-furworks-purple size-4 transition-colors duration-100 sm:size-6;
   }
 </style>

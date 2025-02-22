@@ -2,12 +2,17 @@
 @import "tailwindcss";
 @plugin "@iconify/tailwind4";
 @theme {
-  --color-furworks: rgb(158, 255, 0);
+  --color-furworks: hsl(84, 100%, 50%);
+  --color-furworks-purple: hsl(255, 100%, 50%);
+  --color-furworks-pink: hsl(320, 100%, 50%);
+  --color-furworks-blue: hsl(202, 100%, 50%);
+  --color-furworks-red: hsl(8, 100%, 50%);
+  --color-furworks-white: hsl(210, 100%, 95%);
+  --font-ppformula: "PP Formula Extended Black", monospace;
 }
 
 body {
-  font-family: "PP Formula Extended Black", monospace;
-  @apply bg-black text-neutral-200 antialiased;
+  @apply text-furworks-white font-ppformula bg-black antialiased;
 }
 
 @font-face {

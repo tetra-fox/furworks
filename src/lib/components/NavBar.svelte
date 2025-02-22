@@ -15,20 +15,22 @@
   }}
   class={[
     "fixed top-0 right-0 left-0 z-50 m-6 box-border flex rounded-2xl p-6 transition-all duration-300 ease-out select-none",
-    scrolled || menuOpen ? "outline backdrop-blur-md outline-neutral-900 backdrop-brightness-75" : "outline-0 outline-transparent bg-transparent",
+    scrolled || menuOpen
+      ? "outline outline-neutral-900 backdrop-blur-md backdrop-brightness-75"
+      : "bg-transparent outline-0 outline-transparent",
     menuOpen ? "flex-col" : "flex items-center justify-between"
   ]}>
   <div class="flex w-full items-center justify-between">
     <!-- branding -->
-    <a href="/" class="group relative flex items-center gap-2 text-neutral-200">
-      <div class="bg-fit size-6 sm:size-8 bg-[url('/img/fwks.svg')] bg-center bg-no-repeat"></div>
-      <h1 class="text-furworks text-2xl sm:text-3xl transform translate-y-[0.15rem]">FURWORKS</h1>
+    <a href="/" class="group relative flex items-center gap-2">
+      <div class="bg-fit size-6 bg-[url('/img/fwks.svg')] bg-center bg-no-repeat sm:size-8"></div>
+      <h1 class="text-furworks translate-y-[0.15rem] transform text-2xl sm:text-3xl">FURWORKS</h1>
       <span class="text-furworks underline"></span>
     </a>
 
     <!-- mobile menu button -->
     <button
-      class="flex cursor-pointer items-start text-neutral-200 sm:hidden"
+      class="flex cursor-pointer items-start sm:hidden"
       onclick={() => (menuOpen = !menuOpen)}
       aria-label="Toggle menu">
       <span class="icon-[material-symbols--menu] size-8"></span>
@@ -36,11 +38,11 @@
 
     <!-- desktop links -->
     <div class="hidden sm:flex sm:flex-row sm:gap-4">
-      <a href="/attend" class="group relative text-neutral-200">
-        ATTEND
+      <a href="/register" class="group relative">
+        REGISTER
         <span class="underline"></span>
       </a>
-      <a href="/about" class="group relative text-neutral-200">
+      <a href="/about" class="group relative">
         ABOUT
         <span class="underline"></span>
       </a>
@@ -54,17 +56,11 @@
         "mt-8 flex flex-col items-start justify-center gap-6 overflow-hidden transition-all duration-300",
         menuOpen ? "max-h-[500px]" : "max-h-0"
       ]}>
-      <a
-        href="/attend"
-        class="group relative text-2xl text-neutral-200"
-        onclick={() => (menuOpen = false)}>
-        ATTEND
+      <a href="/register" class="group relative text-2xl" onclick={() => (menuOpen = false)}>
+        REGISTER
         <span class="underline"></span>
       </a>
-      <a
-        href="/about"
-        class="group relative text-2xl text-neutral-200"
-        onclick={() => (menuOpen = false)}>
+      <a href="/about" class="group relative text-2xl" onclick={() => (menuOpen = false)}>
         ABOUT
         <span class="underline"></span>
       </a>
