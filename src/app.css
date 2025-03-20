@@ -1,6 +1,8 @@
 /* tailwind */
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @plugin "@iconify/tailwind4";
+
 @theme {
   --color-furworks: hsl(84, 100%, 50%);
   --color-furworks-purple: hsl(255, 100%, 50%);
@@ -8,8 +10,14 @@
   --color-furworks-blue: hsl(202, 100%, 50%);
   --color-furworks-red: hsl(8, 100%, 50%);
   --color-furworks-white: hsl(210, 100%, 95%);
-  --font-ppformula: "PP Formula Extended Black", monospace;
+  /* fonts */
+  --font-ppformula: "PP Formula Extended Black", sans-serif;
+  --font-ibm-plex-mono: "IBM Plex Mono", monospace;
+  --font-manrope: "Manrope Variable", sans-serif;
 }
+
+@import "@fontsource/ibm-plex-mono";
+@import "@fontsource-variable/manrope";
 
 body {
   @apply text-furworks-white font-ppformula bg-black antialiased;

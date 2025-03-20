@@ -14,7 +14,6 @@
   } from "three/examples/jsm/Addons.js";
   import { NoisePass } from "$lib/NoisePass";
   import { ScanlinesPass } from "$lib/ScanlinesPass";
-  import NavBar from "$lib/components/NavBar.svelte";
 
   let canvas: HTMLCanvasElement | null = null;
   let camera: THREE.PerspectiveCamera | null = null;
@@ -29,14 +28,17 @@
   const passes: Record<string, Pass | ShaderPass | null> = {};
   const easeFactor = 0.1;
   const radius = 25; // camera distance from center
+  const partCount = 200;
+  const partGeo = new THREE.BufferGeometry();
+  const partData = {
+    positions: new Float32Array(partCount * 3),
+    velocities: new Float32Array(partCount * 3)
+  };
 
   let ready = false;
 
   const initScene = () => {
-    if (!canvas) {
-      console.error("failed to init scene: no canvas");
-      return;
-    }
+    if (!canvas) throw new Error("failed to init scene: no canvas");
 
     scene.background = new THREE.Color(0x171717);
 
@@ -97,6 +99,27 @@
     scene.add(logoGroup);
   };
 
+  const addParticles = () => {
+    for (let i = 0; i < partCount * 3; i++) {
+      partData.positions[i] = (Math.random() - 0.5) * 50;
+      partData.velocities[i] = (Math.random() - 0.5) * 0.01;
+    }
+
+    partGeo.setAttribute("position", new THREE.BufferAttribute(partData.positions, 3));
+
+    scene.add(
+      new THREE.Points(
+        partGeo,
+        new THREE.PointsMaterial({
+          color: 0x7ed100, // darker fwks green
+          size: 0.04,
+          transparent: true,
+          opacity: 0.4
+        })
+      )
+    );
+  };
+
   const animate = (time: number) => {
     cameraAngle.x += (cameraAngleTarget.x - cameraAngle.x) * easeFactor;
     cameraAngle.y += (cameraAngleTarget.y - cameraAngle.y) * easeFactor;
@@ -112,12 +135,20 @@
     logoGroup.rotation.set(0, time / 1500, 0);
     logoGroup.position.set(0, Math.sin(time / 750) / 2, 0);
 
+    for (let i = 0; i < partCount * 3; i++) {
+      partData.positions[i] += partData.velocities[i];
+      if (partData.positions[i] > 15 || partData.positions[i] < -15) partData.velocities[i] *= -1; // flip sign to keep particles in bounds
+    }
+
+    partGeo.getAttribute("position").needsUpdate = true;
+
     composer?.render();
   };
 
   onMount(async () => {
     initScene();
     await loadSVG();
+    addParticles();
     renderer?.setAnimationLoop(animate);
     // force first frame to draw, then set ready
     requestAnimationFrame(() => {
@@ -177,13 +208,13 @@
   <meta property="description" content="A forward-thinking furry rave" />
 </svelte:head>
 
-<div class="h-dvh w-dvw p-4">
+<div class="h-dvh p-4">
   <div
     class="relative box-border h-full w-full overflow-hidden rounded-2xl p-8 outline outline-neutral-800">
     <div class="relative z-20 flex h-full items-end justify-between mix-blend-difference">
       <div class="flex flex-col gap-4">
         <h1 class="text-4xl">A forward-thinking furry rave</h1>
-        <h2 class="text-2xl">March 15, 2025 9pm - 2am</h2>
+        <!-- <h2 class="text-2xl">March 15, 2025 9pm - 2am</h2> -->
       </div>
       <div class="flex flex-col gap-4 sm:flex-row">
         <a href="https://bsky.app/profile/furworks.bsky.social" aria-label="Bluesky">

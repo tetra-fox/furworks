@@ -1,0 +1,15 @@
+<svelte:head>
+  <title>FURWORKS // Waiver and Limitation of Liability</title>
+</svelte:head>
+
+# Waiver and Limitation of Liability
+
+In consideration of my participation in any event organized or hosted by **Bark Woof Jump, LLC**, on behalf of myself, my personal representatives, heirs, assigns, and next of kin, I understand and agree as follows:
+
+1. **Limitation of Claims**: Any claim for damages brought by me, the registrant, or any invitee of a **Bark Woof Jump, LLC** event, shall be limited solely to the amount paid for admission to the event. No other damages, fees, costs, expenses, or forms of recovery shall be awarded in any such action.
+
+2. **Assumption of Risk**: I expressly acknowledge and agree that I bear full responsibility for any injury, damage, or harm that may occur while attending or participating in any **Bark Woof Jump, LLC** event or activity.
+
+3. **Limitation of Liability**: This limitation of liability applies to all claims against **Bark Woof Jump, LLC**, its officers, directors, shareholders, managers, agents, employees, volunteers, attorneys, and all others associated with the event or its activities.
+
+4. **Media Release Consent**: By attending any event organized or hosted by **Bark Woof Jump, LLC**, I hereby grant **Bark Woof Jump, LLC** permission to photograph, record, or otherwise capture my image, voice, or likeness during the event. I understand that these materials may be used for promotional, marketing, and other purposes, including but not limited to social media, websites, and other media platforms. I waive any right to inspect or approve the final product and release **Bark Woof Jump, LLC** from any liability arising from the use of these materials. I further understand that I will not receive compensation for any use of these materials.
