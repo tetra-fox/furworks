@@ -7,7 +7,7 @@
     <!-- column 1 -->
     <div class="flex flex-1 flex-col items-start">
       <p>FURWORKS is an event produced by BarkWoofJump, LLC.</p>
-      <a href="mailto:contact@furworks.club">contact@furworks.club</a>
+      <!-- <a href="mailto:contact@furworks.club">contact@furworks.club</a> -->
       <p class="mt-2">Site design by <a href="https://tetra.cool">tetra</a> :3</p>
       <p class="mt-2">&copy; {year} BarkWoofJump, LLC. All rights reserved.</p>
     </div>
