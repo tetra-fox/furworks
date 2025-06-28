@@ -28,14 +28,17 @@
   const passes: Record<string, Pass | ShaderPass | null> = {};
   const easeFactor = 0.1;
   const radius = 25; // camera distance from center
+  const partCount = 200;
+  const partGeo = new THREE.BufferGeometry();
+  const partData = {
+    positions: new Float32Array(partCount * 3),
+    velocities: new Float32Array(partCount * 3)
+  };
 
   let ready = false;
 
   const initScene = () => {
-    if (!canvas) {
-      console.error("failed to init scene: no canvas");
-      return;
-    }
+    if (!canvas) throw new Error("failed to init scene: no canvas");
 
     scene.background = new THREE.Color(0x171717);
 
@@ -96,6 +99,27 @@
     scene.add(logoGroup);
   };
 
+  const addParticles = () => {
+    for (let i = 0; i < partCount * 3; i++) {
+      partData.positions[i] = (Math.random() - 0.5) * 50;
+      partData.velocities[i] = (Math.random() - 0.5) * 0.01;
+    }
+
+    partGeo.setAttribute("position", new THREE.BufferAttribute(partData.positions, 3));
+
+    scene.add(
+      new THREE.Points(
+        partGeo,
+        new THREE.PointsMaterial({
+          color: 0x7ed100, // darker fwks green
+          size: 0.04,
+          transparent: true,
+          opacity: 0.4
+        })
+      )
+    );
+  };
+
   const animate = (time: number) => {
     cameraAngle.x += (cameraAngleTarget.x - cameraAngle.x) * easeFactor;
     cameraAngle.y += (cameraAngleTarget.y - cameraAngle.y) * easeFactor;
@@ -111,14 +135,28 @@
     logoGroup.rotation.set(0, time / 1500, 0);
     logoGroup.position.set(0, Math.sin(time / 750) / 2, 0);
 
+    for (let i = 0; i < partCount * 3; i++) {
+      partData.positions[i] += partData.velocities[i];
+      if (partData.positions[i] > 15 || partData.positions[i] < -15) partData.velocities[i] *= -1; // flip sign to keep particles in bounds
+    }
+
+    partGeo.getAttribute("position").needsUpdate = true;
+
     composer?.render();
   };
 
   onMount(async () => {
     initScene();
     await loadSVG();
+    addParticles();
     renderer?.setAnimationLoop(animate);
-    ready = true;
+    // force first frame to draw, then set ready
+    requestAnimationFrame(() => {
+      composer?.render();
+      requestAnimationFrame(() => {
+        ready = true;
+      });
+    });
   });
 
   onDestroy(() => {
@@ -164,41 +202,29 @@
   <meta property="og:title" content="FURWORKS" />
   <meta property="og:site_name" content="FURWORKS" />
   <meta property="og:description" content="A forward-thinking furry rave" />
-  <meta property="og:url" content="https://furworks.vercel.app" />
+  <meta property="og:url" content="https://furworks.club" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://furworks.vercel.app/img/og.png" />
+  <meta property="og:image" content="https://furworks.club/img/og.png" />
   <meta property="description" content="A forward-thinking furry rave" />
 </svelte:head>
 
-<div class="h-dvh w-dvw p-4">
+<div class="h-dvh p-4">
   <div
-    class="relative box-border h-full w-full overflow-hidden rounded-2xl outline outline-neutral-800 p-8">
+    class="relative box-border h-full w-full overflow-hidden rounded-2xl p-8 outline outline-neutral-800">
     <div class="relative z-20 flex h-full items-end justify-between mix-blend-difference">
       <div class="flex flex-col gap-4">
-        <h1 class="text-4xl text-neutral-200">A forward-thinking furry rave</h1>
-        <h2 class="text-2xl text-neutral-200">March 15, 2025 9pm - 2am</h2>
+        <h1 class="text-4xl">A forward-thinking furry rave</h1>
+        <h2 class="text-2xl">July 26, 2025 9pm - 2am</h2>
       </div>
-      <div class="flex gap-4">
+      <div class="flex flex-col gap-4 sm:flex-row">
         <a href="https://bsky.app/profile/furworks.bsky.social" aria-label="Bluesky">
-          <span
-            class="icon-[fa6-brands--bluesky] size-6 text-neutral-200 transition-colors duration-100 hover:text-neutral-50"
-          ></span
-          ></a>
+          <span class="icon-[fa6-brands--bluesky] social-link"></span></a>
         <a href="https://x.com/thisisfurworks" aria-label="Twitter"
-          ><span
-            class="icon-[fa6-brands--twitter] size-6 text-neutral-200 transition-colors duration-100 hover:text-neutral-50"
-          ></span
-          ></a>
-          <a href="https://instagram.com/thisisfurworks" aria-label="Twitter"
-          ><span
-            class="icon-[fa6-brands--instagram] size-6 text-neutral-200 transition-colors duration-100 hover:text-neutral-50"
-          ></span
-          ></a>
+          ><span class="icon-[fa6-brands--twitter] social-link"></span></a>
+        <a href="https://instagram.com/thisisfurworks" aria-label="Twitter"
+          ><span class="icon-[fa6-brands--instagram] social-link"></span></a>
         <a href="https://t.me/+sfvbvgLQZGcwYmI5" aria-label="Telegram">
-          <span
-            class="icon-[fa6-brands--telegram] size-6 text-neutral-200 transition-colors duration-100 hover:text-neutral-50"
-          ></span
-          ></a>
+          <span class="icon-[fa6-brands--telegram] social-link"></span></a>
       </div>
     </div>
     <canvas
@@ -209,3 +235,11 @@
       ]}></canvas>
   </div>
 </div>
+
+<style lang="postcss">
+  @reference "tailwindcss/theme";
+  @reference "../app.css";
+  .social-link {
+    @apply hover:text-furworks-purple size-4 transition-colors duration-100 sm:size-6;
+  }
+</style>
