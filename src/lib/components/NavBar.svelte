@@ -10,7 +10,7 @@
   let innerWidth = $state(0);
 
   const navLinks = [
-    { href: "https://register.barkwoofjump.club", text: "REGISTER" }
+    { href: "/register", text: "REGISTER" }
     // { href: "/about", text: "ABOUT" }
   ];
 
