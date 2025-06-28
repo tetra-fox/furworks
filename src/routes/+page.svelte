@@ -214,7 +214,7 @@
     <div class="relative z-20 flex h-full items-end justify-between mix-blend-difference">
       <div class="flex flex-col gap-4">
         <h1 class="text-4xl">A forward-thinking furry rave</h1>
-        <!-- <h2 class="text-2xl">March 15, 2025 9pm - 2am</h2> -->
+        <h2 class="text-2xl">July 26, 2025 9pm - 2am</h2>
       </div>
       <div class="flex flex-col gap-4 sm:flex-row">
         <a href="https://bsky.app/profile/furworks.bsky.social" aria-label="Bluesky">
