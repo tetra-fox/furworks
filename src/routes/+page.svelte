@@ -3,18 +3,16 @@
   import { ScanlinesPass } from "$lib/ScanlinesPass";
   import { onMount, onDestroy } from "svelte";
   import * as THREE from "three";
-  import {
-    AfterimagePass,
-    BrightnessContrastShader,
-    FXAAShader,
-    OutputPass,
-    ShaderPass,
-    UnrealBloomPass
-  } from "three/examples/jsm/Addons.js";
   import { SVGLoader } from "three/examples/jsm/loaders/SVGLoader.js";
+  import { AfterimagePass } from "three/examples/jsm/postprocessing/AfterimagePass.js";
   import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
+  import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass.js";
   import { type Pass } from "three/examples/jsm/postprocessing/Pass.js";
   import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
+  import { ShaderPass } from "three/examples/jsm/postprocessing/ShaderPass.js";
+  import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass.js";
+  import { BrightnessContrastShader } from "three/examples/jsm/shaders/BrightnessContrastShader.js";
+  import { FXAAShader } from "three/examples/jsm/shaders/FXAAShader.js";
 
   let canvas: HTMLCanvasElement | null = null;
   let camera: THREE.PerspectiveCamera | null = null;
@@ -81,12 +79,18 @@
     const svgGroup = new THREE.Group();
 
     svg.paths.forEach((path) => {
-      const material = new THREE.MeshBasicMaterial({ color: path.color, side: THREE.DoubleSide });
+      const material = new THREE.MeshBasicMaterial({
+        color: path.color,
+        side: THREE.DoubleSide
+      });
 
       SVGLoader.createShapes(path).forEach((shape) => {
         svgGroup.add(
           new THREE.Mesh(
-            new THREE.ExtrudeGeometry(shape, { depth: 150, bevelEnabled: false }),
+            new THREE.ExtrudeGeometry(shape, {
+              depth: 150,
+              bevelEnabled: false
+            }),
             material
           )
         );
