@@ -10,16 +10,16 @@
   let innerWidth = $state(0);
 
   const navLinks = [
-    { href: "/register", text: "REGISTER" }
-    // { href: "/about", text: "ABOUT" }
+    { href: "/register", text: "REGISTER" },
+    { href: "/merch", text: "MERCH" }
   ];
 
   const closeMenu = () => (menuOpen = false);
 
-  // close menu after any navigation
+  // Close menu after any navigation
   afterNavigate(closeMenu);
 
-  // close menu when window width is >= sm breakpoint
+  // Close menu when window width is at least the sm breakpoint
   $effect(() => {
     if (innerWidth >= 640) closeMenu();
   });
@@ -36,17 +36,24 @@
       ? "outline outline-neutral-900 backdrop-blur-md backdrop-brightness-75"
       : "bg-transparent outline-0 outline-transparent",
     isRoot ? "my-6 py-6" : "my-4 py-4"
-  ]}>
-  <!-- branding -->
+  ]}
+>
+  <!-- Branding -->
   <a href="/" class="group relative flex items-center gap-2">
-    <div class="bg-fit size-6 bg-[url('/img/fwks.svg')] bg-center bg-no-repeat sm:size-8"></div>
-    <h1 class="translate-y-[0.15rem] transform text-2xl text-furworks sm:text-3xl">FURWORKS</h1>
+    <div
+      class="bg-fit size-6 bg-[url('/img/fwks.svg')] bg-center bg-no-repeat sm:size-8"
+    ></div>
+
+    <h1 class="translate-y-[0.15rem] transform text-2xl text-furworks sm:text-3xl">
+      FURWORKS
+    </h1>
+
     <span class="text-furworks underline"></span>
   </a>
 
-  <!-- nav -->
+  <!-- Navigation -->
   <div class="ml-auto flex items-center">
-    <!-- desktop links -->
+    <!-- Desktop links -->
     <div class="hidden sm:flex sm:gap-4">
       {#each navLinks as link}
         <a href={link.href} class="group relative">
@@ -56,18 +63,19 @@
       {/each}
     </div>
 
-    <!-- mobile menu button -->
+    <!-- Mobile menu button -->
     <button
       class="ml-4 flex cursor-pointer items-center sm:hidden"
       onclick={() => (menuOpen = !menuOpen)}
       aria-expanded={menuOpen}
       aria-controls="mobile-menu"
-      aria-label="Toggle menu">
+      aria-label="Toggle menu"
+    >
       <span class="icon-[material-symbols--menu] size-8"></span>
     </button>
   </div>
 
-  <!-- mobile links (floating popup) -->
+  <!-- Mobile links -->
   <div
     id="mobile-menu"
     class={[
@@ -75,7 +83,8 @@
       menuOpen
         ? "pointer-events-auto translate-y-0 opacity-100"
         : "pointer-events-none -translate-y-2 opacity-0"
-    ]}>
+    ]}
+  >
     {#each navLinks as link}
       <a href={link.href} class="group relative w-fit text-xl">
         {link.text}
